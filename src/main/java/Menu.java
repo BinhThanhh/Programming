@@ -39,16 +39,7 @@ public class Menu {
                 ep.setDepartment_id(input.nextInt());
                 System.out.print("Status (Working, Offline, Training): ");
                 input.nextLine();
-                String status = input.nextLine();
-                if (Objects.equals(status, "Working") || Objects.equals(status, "Offline") || Objects.equals(status, "Training")) {
-                    ep.setStatus(status);
-                }else {
-                    while(true) {
-                        System.out.println("Status not correct, try again!");
-                        System.out.print("Status (Working, Offline, Training): ");
-                        status = input.nextLine();
-                    }
-                }
+                ep.setStatus(input.nextLine());
                 ep.addEP();
                 System.out.println("Add completed!");
         }

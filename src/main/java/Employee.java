@@ -136,7 +136,7 @@ public class Employee {
         int department_id = this.department_id;
         String status = this.status;
         //Write SQL add data
-        String sql = "INSERT INTO employees(fullname, email, phone, address, salary, role_id, department_id, status) VALUES (" + fullname + ", " + email + ", " + phone + ", " + address + ", " + salary + ", " + role_id + ", " + department_id + ", " + status + ")";
+        String sql = "INSERT INTO employees(fullname, email, phone, address, salary, role_id, department_id, status) VALUES ('" + fullname + "', '" + email + "', '" + phone + "', '" + address + "', '" + salary + "', '" + role_id + "', '" + department_id + "', '" + status + "')";
         //Run sql
         Statement statement = connection.createStatement();
         statement.executeUpdate(sql);
