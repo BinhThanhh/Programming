@@ -145,7 +145,7 @@ public class Employee {
     }
 
     //metod update data
-    public void updateDP(int id) throws SQLException {
+    public void updateEP(int id) throws SQLException {
         //Connect Db
         Connection connection = DatabaseConnection.openConnection();
         //Get data input
