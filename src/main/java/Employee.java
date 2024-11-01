@@ -94,7 +94,7 @@ public class Employee {
     }
 
     //Method get data from db
-    public void getDP() throws SQLException {
+    public void getEP() throws SQLException {
         //Connect to db
         Connection connection = DatabaseConnection.openConnection();
         //Write SQL to get data from department
@@ -105,25 +105,38 @@ public class Employee {
         ResultSet results = statement.executeQuery(sql);
         //Display data was given
         while (results.next()){
-            //get ID
+            //get information
             int id = results.getInt("id");
-            //get fullname
             String fullname = results.getString("fullname");
+            String email = results.getString("email");
+            String phone = results.getString("phone");
+            String address = results.getString("address");
+            float salary = results.getFloat("salary");
+            int role_id = results.getInt("role_id");
+            int department_id = results.getInt("department_id");
+            String status = results.getString("status");
             //display
-            System.out.println("ID: " + id + ", department_name: " + fullname);
+            System.out.println("ID: " + id + ", Full name: " + fullname + ", Email: " + email + ", Phone: " + phone + ", Address: " + address + ", Salary: " + salary + ", Role id: " + role_id + ", Department id: " + department_id + ", Status: " + status);
             //close
         }
         DatabaseConnection.closeConnection(connection);
     }
 
     //method add data to db
-    public void addDP() throws SQLException {
+    public void addEP() throws SQLException {
         //Connect DB
         Connection connection = DatabaseConnection.openConnection();
         //Get data from keyboard
         String fullname = this.fullname;
+        String email = this.email;
+        String phone = this.phone;
+        String address = this.address;
+        float salary = this.salary;
+        int role_id = this.role_id;
+        int department_id = this.department_id;
+        String status = this.status;
         //Write SQL add data
-        String sql = "INSERT INTO departments(department_name) VALUES (" + fullname + ")";
+        String sql = "INSERT INTO employees(fullname, email, phone, address, salary, role_id, department_id, status) VALUES (" + fullname + ", " + email + ", " + phone + ", " + address + ", " + salary + ", " + role_id + ", " + department_id + ", " + status + ")";
         //Run sql
         Statement statement = connection.createStatement();
         statement.executeUpdate(sql);

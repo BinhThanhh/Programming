@@ -1,10 +1,12 @@
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Menu {
     Scanner input = new Scanner(System.in);
 
     public void menu() throws SQLException {
+        Employee ep = new Employee();
         Department dp = new Department();
         System.out.println("1. Employee list");
         System.out.println("2. Add a Employee");
@@ -16,8 +18,39 @@ public class Menu {
         int menu = input.nextInt();
         switch (menu) {
             case 1:
-                System.out.println("Department list!");
-                dp.getDP();
+                System.out.println("Employee list!");
+                ep.getEP();
+            case 2:
+                System.out.println("Input information of employee:");
+                System.out.print("Full name: ");
+                input.nextLine();
+                ep.setFullname(input.nextLine());
+                System.out.print("Email: ");
+                ep.setEmail(input.nextLine());
+                System.out.print("Phone: ");
+                ep.setPhone(input.nextLine());
+                System.out.print("Address: ");
+                ep.setAddress(input.nextLine());
+                System.out.print("Salary: ");
+                ep.setSalary(input.nextFloat());
+                System.out.print("role_id: ");
+                ep.setRole_id(input.nextInt());
+                System.out.print("Department_id: ");
+                ep.setDepartment_id(input.nextInt());
+                System.out.print("Status (Working, Offline, Training): ");
+                input.nextLine();
+                String status = input.nextLine();
+                if (Objects.equals(status, "Working") || Objects.equals(status, "Offline") || Objects.equals(status, "Training")) {
+                    ep.setStatus(status);
+                }else {
+                    while(true) {
+                        System.out.println("Status not correct, try again!");
+                        System.out.print("Status (Working, Offline, Training): ");
+                        status = input.nextLine();
+                    }
+                }
+                ep.addEP();
+                System.out.println("Add completed!");
         }
     }
 }
