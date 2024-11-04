@@ -148,10 +148,29 @@ public class Employee {
     public void updateEP(int id) throws SQLException {
         //Connect Db
         Connection connection = DatabaseConnection.openConnection();
+        //Get uid employee before edit
+        String checkUid = "SELECT id FROM employees ORDER BY id DESC LIMIT 1";
+        //Run sql get uid
+        Statement statementUid = connection.createStatement();
+        ResultSet results = statementUid.executeQuery(checkUid);
+        //Get uid
+        int uid = results.getInt("id");
+        System.out.println(uid);
+        //Check uid employee
+//        if (this.id > id) {
+//            System.out.println("ID not correct! try again!");
+//        }
         //Get data input
         String fullname = this.fullname;
+        String email = this.email;
+        String phone = this.phone;
+        String address = this.address;
+        float salary = this.salary;
+        int role_id = this.role_id;
+        int department_id = this.department_id;
+        String status = this.status;
         //Write a query update data with id
-        String sql = "UPDATE departments SET department_name = '" + fullname + "'WHERE id = " + id;
+        String sql = "UPDATE employees SET fullname = '" + fullname + "', email = '" + email + "', phone = '" + phone + "', address = '" + address + "', salary = '" + salary + "', role_id = '" + role_id + "', department_id = '" + department_id + "', status = '" + status + "' WHERE id = '" + id + "'";
         //Run query
         Statement statement = connection.createStatement();
         statement.executeUpdate(sql);
