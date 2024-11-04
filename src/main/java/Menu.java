@@ -53,6 +53,40 @@ public class Menu {
                 ep.setStatus(status);
                 ep.addEP();
                 System.out.println("Add completed!");
+            case 3:
+                //get all employee
+                ep.getEP();
+                //Select id employee want to update
+                System.out.print("Please select id employee want to update: ");
+                int idUpdate = input.nextInt();
+                //Input information want to update
+                System.out.print("Full name: ");
+                input.nextLine();
+                ep.setFullname(input.nextLine());
+                System.out.print("Email: ");
+                ep.setEmail(input.nextLine());
+                System.out.print("Phone: ");
+                ep.setPhone(input.nextLine());
+                System.out.print("Address: ");
+                ep.setAddress(input.nextLine());
+                System.out.print("Salary: ");
+                ep.setSalary(input.nextFloat());
+                System.out.print("role_id: ");
+                ep.setRole_id(input.nextInt());
+                System.out.print("Department_id: ");
+                ep.setDepartment_id(input.nextInt());
+                System.out.print("Status (Working, Offline, Training): ");
+                input.nextLine();
+                do {
+                    status = input.nextLine();
+                    if (status.toLowerCase().compareTo("working") != 0 && status.toLowerCase().compareTo("offline") != 0 && status.toLowerCase().compareTo("training") != 0) {
+                        System.out.println("Status not correct, try again!");
+                        System.out.print("Status (Working, Offline, Training): ");
+                    }
+
+                } while (status.toLowerCase().compareTo("working") != 0 && status.toLowerCase().compareTo("offline") != 0 && status.toLowerCase().compareTo("training") != 0);
+                ep.setStatus(status);
+                ep.updateEP(idUpdate);
         }
     }
 }
