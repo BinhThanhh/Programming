@@ -99,9 +99,10 @@ public class Menu {
                     //get all employee
                     ep.getEP();
                     //get id of employee want to delete
-                    System.out.println("Please enter employee id want to delete: ");
+                    System.out.print("Please enter employee id want to delete: ");
                     int idDelete = input.nextInt();
-                    break;
+                    //call method delete
+                    ep.deleteEP(idDelete);
             }
         } while (menu > 6 || menu < 1);
     }

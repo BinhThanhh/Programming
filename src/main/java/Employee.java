@@ -184,6 +184,19 @@ public class Employee {
     public void deleteEP(int id) throws SQLException {
         //Connect Db
         Connection connection = DatabaseConnection.openConnection();
+        //Get uid employee before delete
+        String checkUid = "SELECT id FROM employees ORDER BY id DESC";
+        //Run sql get uid
+        Statement statementUid = connection.createStatement();
+        ResultSet results = statementUid.executeQuery(checkUid);
+        //Get uid
+        results.next();
+        int uid = results.getInt("id");
+        //Check uid employee
+        if (id > uid) {
+            System.out.println("ID not correct! try again!");
+            return;
+        }
         //Write a query update data with id
         String sql = "DELETE FROM employees WHERE id = " + id;
         //Run query
@@ -191,6 +204,7 @@ public class Employee {
         statement.executeUpdate(sql);
         //Close SQL
         DatabaseConnection.closeConnection(connection);
+        System.out.println("Delete completed!");
     }
 
     //method search by id
