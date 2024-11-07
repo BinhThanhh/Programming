@@ -149,17 +149,18 @@ public class Employee {
         //Connect Db
         Connection connection = DatabaseConnection.openConnection();
         //Get uid employee before edit
-        String checkUid = "SELECT id FROM employees ORDER BY id DESC LIMIT 1";
+        String checkUid = "SELECT id FROM employees ORDER BY id DESC";
         //Run sql get uid
         Statement statementUid = connection.createStatement();
         ResultSet results = statementUid.executeQuery(checkUid);
         //Get uid
+        results.next();
         int uid = results.getInt("id");
-        System.out.println(uid);
         //Check uid employee
-//        if (this.id > id) {
-//            System.out.println("ID not correct! try again!");
-//        }
+        if (id > uid) {
+            System.out.println("ID not correct! try again!");
+            return;
+        }
         //Get data input
         String fullname = this.fullname;
         String email = this.email;
@@ -176,14 +177,15 @@ public class Employee {
         statement.executeUpdate(sql);
         //Close SQL
         DatabaseConnection.closeConnection(connection);
+        System.out.println("Update completed!");
     }
 
-    //method delete data in db
-    public void deleteDP(int id) throws SQLException {
+    //method delete employee by id
+    public void deleteEP(int id) throws SQLException {
         //Connect Db
         Connection connection = DatabaseConnection.openConnection();
         //Write a query update data with id
-        String sql = "DELETE FROM departments WHERE id = " + id;
+        String sql = "DELETE FROM employees WHERE id = " + id;
         //Run query
         Statement statement = connection.createStatement();
         statement.executeUpdate(sql);
@@ -209,4 +211,5 @@ public class Employee {
             //close
         }
     }
+
 }

@@ -61,6 +61,7 @@ public class Menu {
                     break;
                 case 3:
                     //get all employee
+                    System.out.println("==> Employee list!");
                     ep.getEP();
                     //Select id employee want to update
                     System.out.print("Please select id employee want to update: ");
@@ -93,7 +94,13 @@ public class Menu {
                     } while (status.toLowerCase().compareTo("working") != 0 && status.toLowerCase().compareTo("offline") != 0 && status.toLowerCase().compareTo("training") != 0);
                     ep.setStatus(status);
                     ep.updateEP(idUpdate);
-                    System.out.println("Update completed!");
+                    break;
+                case 4:
+                    //get all employee
+                    ep.getEP();
+                    //get id of employee want to delete
+                    System.out.println("Please enter employee id want to delete: ");
+                    int idDelete = input.nextInt();
                     break;
             }
         } while (menu > 6 || menu < 1);
