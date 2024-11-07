@@ -103,6 +103,11 @@ public class Menu {
                     int idDelete = input.nextInt();
                     //call method delete
                     ep.deleteEP(idDelete);
+                case 5:
+                    System.out.print("Enter id to search: ");
+                    int searchId = input.nextInt();
+                    ep.searchbyId(searchId);
+                    break;
             }
         } while (menu > 6 || menu < 1);
     }

@@ -117,8 +117,8 @@ public class Employee {
             String status = results.getString("status");
             //display
             System.out.println("ID: " + id + ", Full name: " + fullname + ", Email: " + email + ", Phone: " + phone + ", Address: " + address + ", Salary: " + salary + ", Role id: " + role_id + ", Department id: " + department_id + ", Status: " + status);
-            //close
         }
+        //close
         DatabaseConnection.closeConnection(connection);
     }
 
@@ -211,19 +211,39 @@ public class Employee {
     public void searchbyId(int id) throws SQLException {
         //Connect DB
         Connection connection = DatabaseConnection.openConnection();
+        //Get uid employee before search
+        String checkUid = "SELECT id FROM employees ORDER BY id DESC";
+        //Run sql get uid
+        Statement statementUid = connection.createStatement();
+        ResultSet result = statementUid.executeQuery(checkUid);
+        //Get uid
+        result.next();
+        int uid = result.getInt("id");
+        //Check uid employee
+        if (id > uid) {
+            System.out.println("ID not correct! try again!");
+            return;
+        }
         //Write query to search by id
-        String sql = "SELECT * FROM Departments WHERE id = " + id;
+        String sql = "SELECT * FROM employees WHERE id = '" + id + "'";
         //Run query
         Statement statement = connection.createStatement();
         ResultSet results = statement.executeQuery(sql);
         //Display data was given
         while (results.next()){
-            //get department_name
-            String department_name = results.getString("department_name");
+            //get information
+            String fullname = results.getString("fullname");
+            String email = results.getString("email");
+            String phone = results.getString("phone");
+            String address = results.getString("address");
+            float salary = results.getFloat("salary");
+            int role_id = results.getInt("role_id");
+            int department_id = results.getInt("department_id");
+            String status = results.getString("status");
             //display
-            System.out.println("ID: " + id + ", department_name: " + department_name);
-            //close
+            System.out.println("ID: " + id + ", Full name: " + fullname + ", Email: " + email + ", Phone: " + phone + ", Address: " + address + ", Salary: " + salary + ", Role id: " + role_id + ", Department id: " + department_id + ", Status: " + status);
         }
+        //close
+        DatabaseConnection.closeConnection(connection);
     }
-
 }
