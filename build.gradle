@@ -1,9 +1,28 @@
 plugins {
+    id 'application'
     id 'java'
+
 }
 
 group = 'com.zuki.employee_management'
 version = ''
+application {
+    // Define the main class for the application.
+    mainClass = 'main'
+}
+
+ext {
+    libsDir = 'build'
+}
+tasks.withType(Jar) {
+    archiveBaseName = 'Employee_management'
+    destinationDirectory = file('/')
+}
+jar {
+    manifest {
+        attributes 'Main-Class': 'main'
+    }
+}
 
 repositories {
     mavenCentral()

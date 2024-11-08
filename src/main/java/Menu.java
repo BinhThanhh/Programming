@@ -179,7 +179,11 @@ public class Menu {
                     System.out.print("Select id to delete: ");
                     role.deleteRole(input.nextInt());
                     break;
-
+                case 0:
+                    break;
+                default:
+                    System.out.println("Unknown select!");
+                    break;
             }
         } while (menu > 14 || menu < 1);
     }
