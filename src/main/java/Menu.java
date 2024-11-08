@@ -8,6 +8,7 @@ public class Menu {
     public void menu() throws SQLException {
         Employee ep = new Employee();
         Department dp = new Department();
+        Role role = new Role();
         System.out.println("-----------Employee management----------");
         System.out.println("|-1. Employee list----------------------|");
         System.out.println("|-2. Add a Employee---------------------|");
@@ -20,6 +21,11 @@ public class Menu {
         System.out.println("|-8. Update department------------------|");
         System.out.println("|-9. Delete department------------------|");
         System.out.println("------------Role management--------------");
+        System.out.println("|-10. Role list-------------------------|");
+        System.out.println("|-11. Add role--------------------------|");
+        System.out.println("|-12. Update role-----------------------|");
+        System.out.println("|-13. Delete role-----------------------|");
+        System.out.println("-----------------------------------------");
         System.out.println("|-0. Cancel-----------------------------|");
         System.out.println("|_______________________________________|");
         int menu;
@@ -62,8 +68,8 @@ public class Menu {
 
                     } while (status.toLowerCase().compareTo("working") != 0 && status.toLowerCase().compareTo("offline") != 0 && status.toLowerCase().compareTo("training") != 0);
                     ep.setStatus(status);
+                    System.out.println();
                     ep.addEP();
-                    System.out.println("Add completed!");
                     break;
                 case 3:
                     //get all employee
@@ -99,6 +105,7 @@ public class Menu {
 
                     } while (status.toLowerCase().compareTo("working") != 0 && status.toLowerCase().compareTo("offline") != 0 && status.toLowerCase().compareTo("training") != 0);
                     ep.setStatus(status);
+                    System.out.println();
                     ep.updateEP(idUpdate);
                     break;
                 case 4:
@@ -126,25 +133,55 @@ public class Menu {
                     System.out.print("Input department name: ");
                     input.nextLine();
                     dp.setDepartment_name(input.nextLine());
+                    System.out.println();
                     dp.addDP();
                     break;
                 case 8:
                     //Update department
                     System.out.print("Select department to update: ");
-                    int id = input.nextInt();
+                    int idDpUpdate = input.nextInt();
                     System.out.print("Department name: ");
                     input.nextLine();
                     dp.setDepartment_name(input.nextLine());
                     System.out.println();
-                    dp.updateDP(id);
+                    dp.updateDP(idDpUpdate);
                     break;
                 case 9:
                     //Delete department
                     System.out.print("Select id to delete: ");
                     dp.deleteDP(input.nextInt());
                     break;
+                case 10:
+                    //Get all department list
+                    System.out.println("==> Role list!");
+                    role.getRole();
+                    break;
+                case 11:
+                    //Add department
+                    System.out.print("Input role name: ");
+                    input.nextLine();
+                    role.setRole_name(input.nextLine());
+                    System.out.println();
+                    role.addRole();
+                    break;
+                case 12:
+                    //Update department
+                    System.out.print("Select role to update: ");
+                    int idRoleUpdate = input.nextInt();
+                    System.out.print("Role name: ");
+                    input.nextLine();
+                    role.setRole_name(input.nextLine());
+                    System.out.println();
+                    role.updateRole(idRoleUpdate);
+                    break;
+                case 13:
+                    //Delete department
+                    System.out.print("Select id to delete: ");
+                    role.deleteRole(input.nextInt());
+                    break;
+
             }
-        } while (menu > 10 || menu < 1);
+        } while (menu > 14 || menu < 1);
     }
 
 }

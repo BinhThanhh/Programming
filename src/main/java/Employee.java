@@ -142,6 +142,8 @@ public class Employee {
         statement.executeUpdate(sql);
         //Close SQL
         DatabaseConnection.closeConnection(connection);
+        System.out.println();
+        System.out.println("Add completed!");
     }
 
     //metod update data
