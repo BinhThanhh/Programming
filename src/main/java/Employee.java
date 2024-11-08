@@ -194,7 +194,7 @@ public class Employee {
         int uid = results.getInt("id");
         //Check uid employee
         if (id > uid) {
-            System.out.println("ID not correct! try again!");
+            System.out.println("ID not found! try again!");
             return;
         }
         //Write a query update data with id
@@ -221,7 +221,7 @@ public class Employee {
         int uid = result.getInt("id");
         //Check uid employee
         if (id > uid) {
-            System.out.println("ID not correct! try again!");
+            System.out.println("ID not found! try again!");
             return;
         }
         //Write query to search by id

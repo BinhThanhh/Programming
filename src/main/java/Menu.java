@@ -14,7 +14,13 @@ public class Menu {
         System.out.println("|-3. Update a Employee------------------|");
         System.out.println("|-4. Delete a Employee------------------|");
         System.out.println("|-5. Search by id-----------------------|");
-        System.out.println("|-6. Cancel-----------------------------|");
+        System.out.println("---------Department management-----------");
+        System.out.println("|-6. Department list--------------------|");
+        System.out.println("|-7. Add department---------------------|");
+        System.out.println("|-8. Update department------------------|");
+        System.out.println("|-9. Delete department------------------|");
+        System.out.println("------------Role management--------------");
+        System.out.println("|-0. Cancel-----------------------------|");
         System.out.println("|_______________________________________|");
         int menu;
         do {
@@ -97,6 +103,7 @@ public class Menu {
                     break;
                 case 4:
                     //get all employee
+                    System.out.println("==> Employee list!");
                     ep.getEP();
                     //get id of employee want to delete
                     System.out.print("Please enter employee id want to delete: ");
@@ -104,12 +111,40 @@ public class Menu {
                     //call method delete
                     ep.deleteEP(idDelete);
                 case 5:
+                    //Search employee by id
                     System.out.print("Enter id to search: ");
                     int searchId = input.nextInt();
                     ep.searchbyId(searchId);
                     break;
+                case 6:
+                    //Get all department list
+                    System.out.println("==> Department list!");
+                    dp.getDP();
+                    break;
+                case 7:
+                    //Add department
+                    System.out.print("Input department name: ");
+                    input.nextLine();
+                    dp.setDepartment_name(input.nextLine());
+                    dp.addDP();
+                    break;
+                case 8:
+                    //Update department
+                    System.out.print("Select department to update: ");
+                    int id = input.nextInt();
+                    System.out.print("Department name: ");
+                    input.nextLine();
+                    dp.setDepartment_name(input.nextLine());
+                    System.out.println();
+                    dp.updateDP(id);
+                    break;
+                case 9:
+                    //Delete department
+                    System.out.print("Select id to delete: ");
+                    dp.deleteDP(input.nextInt());
+                    break;
             }
-        } while (menu > 6 || menu < 1);
+        } while (menu > 10 || menu < 1);
     }
 
 }
