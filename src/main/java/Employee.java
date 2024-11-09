@@ -126,6 +126,34 @@ public class Employee {
     public void addEP() throws SQLException {
         //Connect DB
         Connection connection = DatabaseConnection.openConnection();
+        //Get uid role before add
+        String checkUidRole = "SELECT id FROM roles ORDER BY id DESC";
+        //Run sql get uid
+        Statement statementUid = connection.createStatement();
+        ResultSet resultRole = statementUid.executeQuery(checkUidRole);
+        //Get uid
+        resultRole.next();
+        int role_uid = resultRole.getInt("id");
+        int roleid = this.role_id;
+        //Check uid role
+        if (roleid > role_uid) {
+            System.out.println("Role ID not correct! try again!");
+            return;
+        }
+        //Get uid department before add
+        String checkUidDepartment = "SELECT id FROM roles ORDER BY id DESC";
+        //Run sql get uid
+        Statement statementDepartment = connection.createStatement();
+        ResultSet resultDepartment = statementDepartment.executeQuery(checkUidDepartment);
+        //Get uid
+        resultDepartment.next();
+        int department_uid = resultDepartment.getInt("id");
+        int departmentid = this.department_id;
+        //Check uid department
+        if (departmentid > department_uid) {
+            System.out.println("Department ID not correct! try again!");
+            return;
+        }
         //Get data from keyboard
         String fullname = this.fullname;
         String email = this.email;
