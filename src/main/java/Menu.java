@@ -212,7 +212,7 @@ public class Menu {
                     System.out.println("Unknown select!");
                     break;
             }
-        } while (menu > 15 || menu < 1);
+        } while (menu > 15 || menu < 0);
     }
 
 }
