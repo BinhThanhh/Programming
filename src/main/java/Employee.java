@@ -248,4 +248,46 @@ public class Employee {
         //close
         DatabaseConnection.closeConnection(connection);
     }
+
+    //Method search employee based on selected department
+    public void searchbyDP(int department_id) throws SQLException {
+        //Connect Db
+        Connection connection = DatabaseConnection.openConnection();
+        //Get uid department before search
+        String checkUid = "SELECT id FROM departments ORDER BY id DESC";
+        //Run sql get uid
+        Statement statementUid = connection.createStatement();
+        ResultSet results = statementUid.executeQuery(checkUid);
+        //Get uid
+        results.next();
+        int uid = results.getInt("id");
+        //Check uid employee
+        if (id > uid) {
+            System.out.println("ID not found! try again!");
+            return;
+        }
+        //Write sql search employee by department id
+        String sql = ("SELECT * FROM employees INNER JOIN departments ON employees.department_id = departments.id WHERE department_id = " + department_id);
+        //Run sql get uid
+        Statement statementSearch = connection.createStatement();
+        ResultSet result = statementUid.executeQuery(sql);
+        //Display data was given
+        while (result.next()){
+            //get information
+            int id = result.getInt("id");
+            String fullname = result.getString("fullname");
+            String email = result.getString("email");
+            String phone = result.getString("phone");
+            String address = result.getString("address");
+            float salary = result.getFloat("salary");
+            int role_id = result.getInt("role_id");
+            department_id = result.getInt("department_id");
+            String status = result.getString("status");
+            String department_name = result.getString("department_name");
+            //display
+            System.out.println("ID: " + id + ", Full name: " + fullname + ", Email: " + email + ", Phone: " + phone + ", Address: " + address + ", Salary: " + salary + ", Role id: " + role_id + ", Department id: " + department_id + ", Status: " + status + ", Department name: " + department_name);
+        }
+        //close
+        DatabaseConnection.closeConnection(connection);
+    }
 }

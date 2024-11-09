@@ -9,25 +9,27 @@ public class Menu {
         Employee ep = new Employee();
         Department dp = new Department();
         Role role = new Role();
-        System.out.println("-----------Employee management----------");
-        System.out.println("|-1. Employee list----------------------|");
-        System.out.println("|-2. Add a Employee---------------------|");
-        System.out.println("|-3. Update a Employee------------------|");
-        System.out.println("|-4. Delete a Employee------------------|");
-        System.out.println("|-5. Search by id-----------------------|");
-        System.out.println("---------Department management-----------");
-        System.out.println("|-6. Department list--------------------|");
-        System.out.println("|-7. Add department---------------------|");
-        System.out.println("|-8. Update department------------------|");
-        System.out.println("|-9. Delete department------------------|");
-        System.out.println("------------Role management--------------");
-        System.out.println("|-10. Role list-------------------------|");
-        System.out.println("|-11. Add role--------------------------|");
-        System.out.println("|-12. Update role-----------------------|");
-        System.out.println("|-13. Delete role-----------------------|");
-        System.out.println("-----------------------------------------");
-        System.out.println("|-0. Cancel-----------------------------|");
-        System.out.println("|_______________________________________|");
+        System.out.println("---------------Employee management-------------------");
+        System.out.println("|-1. Employee list-----------------------------------|");
+        System.out.println("|-2. Add a Employee----------------------------------|");
+        System.out.println("|-3. Update a Employee-------------------------------|");
+        System.out.println("|-4. Delete a Employee-------------------------------|");
+        System.out.println("|-5. Search by id------------------------------------|");
+        System.out.println("-------------Department management--------------------");
+        System.out.println("|-6. Department list---------------------------------|");
+        System.out.println("|-7. Add department----------------------------------|");
+        System.out.println("|-8. Update department-------------------------------|");
+        System.out.println("|-9. Delete department-------------------------------|");
+        System.out.println("----------------Role management-----------------------");
+        System.out.println("|-10. Role list--------------------------------------|");
+        System.out.println("|-11. Add role---------------------------------------|");
+        System.out.println("|-12. Update role------------------------------------|");
+        System.out.println("|-13. Delete role------------------------------------|");
+        System.out.println("--------------------Function--------------------------");
+        System.out.println("|14. Search employee with department id--------------|");
+        System.out.println("------------------------------------------------------");
+        System.out.println("|-0. Cancel------------------------------------------|");
+        System.out.println("|____________________________________________________|");
         int menu;
         do {
             //Request user select menu option
@@ -178,6 +180,15 @@ public class Menu {
                     //Delete department
                     System.out.print("Select id to delete: ");
                     role.deleteRole(input.nextInt());
+                    break;
+                case 14:
+                    //Get information of department
+                    System.out.println("==> Department list!");
+                    dp.getDP();
+                    //Select department_id to search
+                    System.out.print("Enter id of department want to search: ");
+                    int dp_id = input.nextInt();
+                    ep.searchbyDP(dp_id);
                     break;
                 case 0:
                     break;
