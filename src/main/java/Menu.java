@@ -9,34 +9,38 @@ public class Menu {
         Employee ep = new Employee();
         Department dp = new Department();
         Role role = new Role();
-        System.out.println("---------------Employee management-------------------");
-        System.out.println("|-1. Employee list-----------------------------------|");
-        System.out.println("|-2. Add a Employee----------------------------------|");
-        System.out.println("|-3. Update a Employee-------------------------------|");
-        System.out.println("|-4. Delete a Employee-------------------------------|");
-        System.out.println("|-5. Search by id------------------------------------|");
-        System.out.println("-------------Department management--------------------");
-        System.out.println("|-6. Department list---------------------------------|");
-        System.out.println("|-7. Add department----------------------------------|");
-        System.out.println("|-8. Update department-------------------------------|");
-        System.out.println("|-9. Delete department-------------------------------|");
-        System.out.println("----------------Role management-----------------------");
-        System.out.println("|-10. Role list--------------------------------------|");
-        System.out.println("|-11. Add role---------------------------------------|");
-        System.out.println("|-12. Update role------------------------------------|");
-        System.out.println("|-13. Delete role------------------------------------|");
-        System.out.println("--------------------Function--------------------------");
-        System.out.println("|14. Search employee with department id--------------|");
-        System.out.println("------------------------------------------------------");
-        System.out.println("|-0. Cancel------------------------------------------|");
-        System.out.println("|____________________________________________________|");
+        System.out.println("|------------------------Employee management----------------------|");
+        System.out.println("|-1. Employee list------------------------------------------------|");
+        System.out.println("|-2. Add a Employee-----------------------------------------------|");
+        System.out.println("|-3. Update a Employee--------------------------------------------|");
+        System.out.println("|-4. Delete a Employee--------------------------------------------|");
+        System.out.println("|-5. Search by id-------------------------------------------------|");
+        System.out.println("|-6. Search employee with department id---------------------------|");
+        System.out.println("|-7. Search employee with status: Working-------------------------|");
+        System.out.println("|-8. Search employee with status: Offline-------------------------|");
+        System.out.println("|-9. Display a list of employee with ascending salary-------------|");
+        System.out.println("|-10. Display a list of employee with salary greater 3000$--------|");
+        System.out.println("----------------------Department management------------------------");
+        System.out.println("|-11. Department list---------------------------------------------|");
+        System.out.println("|-12. Add department----------------------------------------------|");
+        System.out.println("|-13. Update department-------------------------------------------|");
+        System.out.println("|-14. Delete department-------------------------------------------|");
+        System.out.println("-------------------------Role management---------------------------");
+        System.out.println("|-15. Role list---------------------------------------------------|");
+        System.out.println("|-16. Add role----------------------------------------------------|");
+        System.out.println("|-17. Update role-------------------------------------------------|");
+        System.out.println("|-18. Delete role-------------------------------------------------|");
+        System.out.println("----------------------------Function-------------------------------");
+        System.out.println("-------------------------------------------------------------------");
+        System.out.println("|-0. Cancel-------------------------------------------------------|");
+        System.out.println("|_________________________________________________________________|");
         int menu;
         do {
             //Request user select menu option
             System.out.print("==> Input a number in menu to select: ");
             menu = input.nextInt();
             //Menu switch case
-            switch (menu) {
+            switch ((int) menu) {
                 case 1:
                     System.out.println("==> Employee list!");
                     ep.getEP();
@@ -126,11 +130,32 @@ public class Menu {
                     ep.searchbyId(searchId);
                     break;
                 case 6:
+                    //Get information of department
+                    System.out.println("==> Department list!");
+                    dp.getDP();
+                    //Select department_id to search
+                    System.out.print("Enter id of department want to search: ");
+                    int dp_id = input.nextInt();
+                    ep.searchbyDP(dp_id);
+                    break;
+                case 7:
+                    ep.searchStatusWithWorking();
+                    break;
+                case 8:
+                    ep.searchStatusWithOffline();
+                    break;
+                case 9:
+                    ep.displayEmployeeWithAscendingSalary();
+                    break;
+                case 10:
+                    ep.displayEmployeeWithSlaryGreater3000();
+                    break;
+                case 11:
                     //Get all department list
                     System.out.println("==> Department list!");
                     dp.getDP();
                     break;
-                case 7:
+                case 12:
                     //Add department
                     System.out.print("Input department name: ");
                     input.nextLine();
@@ -138,7 +163,7 @@ public class Menu {
                     System.out.println();
                     dp.addDP();
                     break;
-                case 8:
+                case 13:
                     //Update department
                     System.out.print("Select department to update: ");
                     int idDpUpdate = input.nextInt();
@@ -148,17 +173,17 @@ public class Menu {
                     System.out.println();
                     dp.updateDP(idDpUpdate);
                     break;
-                case 9:
+                case 14:
                     //Delete department
                     System.out.print("Select id to delete: ");
                     dp.deleteDP(input.nextInt());
                     break;
-                case 10:
+                case 15:
                     //Get all department list
                     System.out.println("==> Role list!");
                     role.getRole();
                     break;
-                case 11:
+                case 16:
                     //Add department
                     System.out.print("Input role name: ");
                     input.nextLine();
@@ -166,7 +191,7 @@ public class Menu {
                     System.out.println();
                     role.addRole();
                     break;
-                case 12:
+                case 17:
                     //Update department
                     System.out.print("Select role to update: ");
                     int idRoleUpdate = input.nextInt();
@@ -176,19 +201,10 @@ public class Menu {
                     System.out.println();
                     role.updateRole(idRoleUpdate);
                     break;
-                case 13:
+                case 18:
                     //Delete department
                     System.out.print("Select id to delete: ");
                     role.deleteRole(input.nextInt());
-                    break;
-                case 14:
-                    //Get information of department
-                    System.out.println("==> Department list!");
-                    dp.getDP();
-                    //Select department_id to search
-                    System.out.print("Enter id of department want to search: ");
-                    int dp_id = input.nextInt();
-                    ep.searchbyDP(dp_id);
                     break;
                 case 0:
                     break;
@@ -196,7 +212,7 @@ public class Menu {
                     System.out.println("Unknown select!");
                     break;
             }
-        } while (menu > 14 || menu < 1);
+        } while (menu > 15 || menu < 1);
     }
 
 }
