@@ -127,6 +127,7 @@ public class Menu {
                     int idDelete = input.nextInt();
                     //call method delete
                     ep.deleteEP(idDelete);
+                    break;
                 case 5:
                     //Search employee by id
                     System.out.print("Enter id to search: ");

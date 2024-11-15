@@ -324,20 +324,20 @@ public class Employee {
         String sql = ("SELECT * FROM employees INNER JOIN departments ON employees.department_id = departments.id WHERE department_id = " + department_id);
         //Run sql get uid
         Statement statementSearch = connection.createStatement();
-        ResultSet result = statementUid.executeQuery(sql);
+        ResultSet result = statementSearch.executeQuery(sql);
         //Display data was given
         while (result.next()){
             //get information
-            int id = results.getInt("id");
-            String fullname = results.getString("fullname");
-            String email = results.getString("email");
-            String phone = results.getString("phone");
-            String address = results.getString("address");
-            float salary = results.getFloat("salary");
-            float coefficient = results.getFloat("coefficient");
-            float totalsalary = results.getFloat("totalsalary");
-            int role_id = results.getInt("role_id");
-            String status = results.getString("status");
+            int id = result.getInt("id");
+            String fullname = result.getString("fullname");
+            String email = result.getString("email");
+            String phone = result.getString("phone");
+            String address = result.getString("address");
+            float salary = result.getFloat("salary");
+            float coefficient = result.getFloat("coefficient");
+            float totalsalary = result.getFloat("totalsalary");
+            int role_id = result.getInt("role_id");
+            String status = result.getString("status");
             //display
             System.out.println("ID: " + id + ", Full name: " + fullname + ", Email: " + email + ", Phone: " + phone + ", Address: " + address + ", Salary: " + salary + ", Coefficient: " + coefficient + ", Total Salary: "+ totalsalary +", Role id: " + role_id + ", Department id: " + department_id + ", Status: " + status);
         }
