@@ -11,6 +11,8 @@ public class Employee {
     private String phone;
     private String address;
     private float salary;
+    private float coefficient;
+    private float totalsalary;
     private int role_id;
     private int department_id;
     private String status;
@@ -69,6 +71,22 @@ public class Employee {
         this.salary = salary;
     }
 
+    public float getCoefficient() {
+        return coefficient;
+    }
+
+    public void setCoefficient(float coefficient) {
+        this.coefficient = coefficient;
+    }
+
+    public float getTotalsalary() {
+        return totalsalary;
+    }
+
+    public void setTotalsalary(float totalsalary) {
+        this.totalsalary = totalsalary;
+    }
+
     public int getRole_id() {
         return role_id;
     }
@@ -112,11 +130,13 @@ public class Employee {
             String phone = results.getString("phone");
             String address = results.getString("address");
             float salary = results.getFloat("salary");
+            float coefficient = results.getFloat("coefficient");
+            float totalsalary = results.getFloat("totalsalary");
             int role_id = results.getInt("role_id");
             int department_id = results.getInt("department_id");
             String status = results.getString("status");
             //display
-            System.out.println("ID: " + id + ", Full name: " + fullname + ", Email: " + email + ", Phone: " + phone + ", Address: " + address + ", Salary: " + salary + ", Role id: " + role_id + ", Department id: " + department_id + ", Status: " + status);
+            System.out.println("ID: " + id + ", Full name: " + fullname + ", Email: " + email + ", Phone: " + phone + ", Address: " + address + ", Salary: " + salary + ", Coefficient: " + coefficient + ", Total Salary: "+ totalsalary +", Role id: " + role_id + ", Department id: " + department_id + ", Status: " + status);
         }
         //close
         DatabaseConnection.closeConnection(connection);
@@ -160,11 +180,13 @@ public class Employee {
         String phone = this.phone;
         String address = this.address;
         float salary = this.salary;
+        float coefficient = this.coefficient;
+        float totalsalary = this.salary*this.coefficient;
         int role_id = this.role_id;
         int department_id = this.department_id;
         String status = this.status;
         //Write SQL add data
-        String sql = "INSERT INTO employees(fullname, email, phone, address, salary, role_id, department_id, status) VALUES ('" + fullname + "', '" + email + "', '" + phone + "', '" + address + "', '" + salary + "', '" + role_id + "', '" + department_id + "', '" + status + "')";
+        String sql = "INSERT INTO employees(fullname, email, phone, address, salary, coefficient, totalsalary, role_id, department_id, status) VALUES ('" + fullname + "', '" + email + "', '" + phone + "', '" + address + "', '" + salary + "', '" + coefficient +"', '" + totalsalary +"', '" + role_id + "', '" + department_id + "', '" + status + "')";
         //Run sql
         Statement statement = connection.createStatement();
         statement.executeUpdate(sql);
@@ -197,11 +219,13 @@ public class Employee {
         String phone = this.phone;
         String address = this.address;
         float salary = this.salary;
+        float coefficient = this.coefficient;
+        float totalsalary = this.salary*this.coefficient;
         int role_id = this.role_id;
         int department_id = this.department_id;
         String status = this.status;
         //Write a query update data with id
-        String sql = "UPDATE employees SET fullname = '" + fullname + "', email = '" + email + "', phone = '" + phone + "', address = '" + address + "', salary = '" + salary + "', role_id = '" + role_id + "', department_id = '" + department_id + "', status = '" + status + "' WHERE id = '" + id + "'";
+        String sql = "UPDATE employees SET fullname = '" + fullname + "', email = '" + email + "', phone = '" + phone + "', address = '" + address + "', salary = '" + salary + "', coefficient = '" + coefficient + "',totalsalary = '" + totalsalary + "', role_id = '" + role_id + "', department_id = '" + department_id + "', status = '" + status + "' WHERE id = '" + id + "'";
         //Run query
         Statement statement = connection.createStatement();
         statement.executeUpdate(sql);
@@ -267,11 +291,13 @@ public class Employee {
             String phone = results.getString("phone");
             String address = results.getString("address");
             float salary = results.getFloat("salary");
+            float coefficient = results.getFloat("coefficient");
+            float totalsalary = results.getFloat("totalsalary");
             int role_id = results.getInt("role_id");
             int department_id = results.getInt("department_id");
             String status = results.getString("status");
             //display
-            System.out.println("ID: " + id + ", Full name: " + fullname + ", Email: " + email + ", Phone: " + phone + ", Address: " + address + ", Salary: " + salary + ", Role id: " + role_id + ", Department id: " + department_id + ", Status: " + status);
+            System.out.println("ID: " + id + ", Full name: " + fullname + ", Email: " + email + ", Phone: " + phone + ", Address: " + address + ", Salary: " + salary + ", Coefficient: " + coefficient + ", Total Salary: "+ totalsalary +", Role id: " + role_id + ", Department id: " + department_id + ", Status: " + status);
         }
         //close
         DatabaseConnection.closeConnection(connection);
@@ -302,18 +328,18 @@ public class Employee {
         //Display data was given
         while (result.next()){
             //get information
-            int id = result.getInt("id");
-            String fullname = result.getString("fullname");
-            String email = result.getString("email");
-            String phone = result.getString("phone");
-            String address = result.getString("address");
-            float salary = result.getFloat("salary");
-            int role_id = result.getInt("role_id");
-            department_id = result.getInt("department_id");
-            String status = result.getString("status");
-            String department_name = result.getString("department_name");
+            int id = results.getInt("id");
+            String fullname = results.getString("fullname");
+            String email = results.getString("email");
+            String phone = results.getString("phone");
+            String address = results.getString("address");
+            float salary = results.getFloat("salary");
+            float coefficient = results.getFloat("coefficient");
+            float totalsalary = results.getFloat("totalsalary");
+            int role_id = results.getInt("role_id");
+            String status = results.getString("status");
             //display
-            System.out.println("ID: " + id + ", Full name: " + fullname + ", Email: " + email + ", Phone: " + phone + ", Address: " + address + ", Salary: " + salary + ", Role id: " + role_id + ", Department id: " + department_id + ", Status: " + status + ", Department name: " + department_name);
+            System.out.println("ID: " + id + ", Full name: " + fullname + ", Email: " + email + ", Phone: " + phone + ", Address: " + address + ", Salary: " + salary + ", Coefficient: " + coefficient + ", Total Salary: "+ totalsalary +", Role id: " + role_id + ", Department id: " + department_id + ", Status: " + status);
         }
         //close
         DatabaseConnection.closeConnection(connection);
@@ -337,17 +363,19 @@ public class Employee {
             String phone = result.getString("phone");
             String address = result.getString("address");
             float salary = result.getFloat("salary");
+            float coefficient = result.getFloat("coefficient");
+            float totalsalary = result.getFloat("totalsalary");
             int role_id = result.getInt("role_id");
             int department_id = result.getInt("department_id");
             String status = result.getString("status");
             //display
-            System.out.println("ID: " + id + ", Full name: " + fullname + ", Email: " + email + ", Phone: " + phone + ", Address: " + address + ", Salary: " + salary + ", Role id: " + role_id + ", Department id: " + department_id + ", Status: " + status);
+            System.out.println("ID: " + id + ", Full name: " + fullname + ", Email: " + email + ", Phone: " + phone + ", Address: " + address + ", Salary: " + salary + ", Coefficient: " + coefficient + ", Total Salary: "+ totalsalary +", Role id: " + role_id + ", Department id: " + department_id + ", Status: " + status);
         }
         //close
         DatabaseConnection.closeConnection(connection);
     }
 
-    //Method search employee with status working
+    //Method search employee with status offline
     public void searchStatusWithOffline() throws SQLException {
         //Connect Db
         Connection connection = DatabaseConnection.openConnection();
@@ -365,11 +393,13 @@ public class Employee {
             String phone = result.getString("phone");
             String address = result.getString("address");
             float salary = result.getFloat("salary");
+            float coefficient = result.getFloat("coefficient");
+            float totalsalary = result.getFloat("totalsalary");
             int role_id = result.getInt("role_id");
             int department_id = result.getInt("department_id");
             String status = result.getString("status");
             //display
-            System.out.println("ID: " + id + ", Full name: " + fullname + ", Email: " + email + ", Phone: " + phone + ", Address: " + address + ", Salary: " + salary + ", Role id: " + role_id + ", Department id: " + department_id + ", Status: " + status);
+            System.out.println("ID: " + id + ", Full name: " + fullname + ", Email: " + email + ", Phone: " + phone + ", Address: " + address + ", Salary: " + salary + ", Coefficient: " + coefficient + ", Total Salary: "+ totalsalary +", Role id: " + role_id + ", Department id: " + department_id + ", Status: " + status);
         }
         //close
         DatabaseConnection.closeConnection(connection);
@@ -380,7 +410,7 @@ public class Employee {
         //Connect Db
         Connection connection = DatabaseConnection.openConnection();
         //Write sql to search status with Working
-        String sql = ("SELECT * FROM employees ORDER BY salary ASC");
+        String sql = ("SELECT * FROM employees ORDER BY totalsalary ASC");
         //Run sql
         Statement statement = connection.createStatement();
         ResultSet result = statement.executeQuery(sql);
@@ -393,11 +423,13 @@ public class Employee {
             String phone = result.getString("phone");
             String address = result.getString("address");
             float salary = result.getFloat("salary");
+            float coefficient = result.getFloat("coefficient");
+            float totalsalary = result.getFloat("totalsalary");
             int role_id = result.getInt("role_id");
             int department_id = result.getInt("department_id");
             String status = result.getString("status");
             //display
-            System.out.println("ID: " + id + ", Full name: " + fullname + ", Email: " + email + ", Phone: " + phone + ", Address: " + address + ", Salary: " + salary + ", Role id: " + role_id + ", Department id: " + department_id + ", Status: " + status);
+            System.out.println("ID: " + id + ", Full name: " + fullname + ", Email: " + email + ", Phone: " + phone + ", Address: " + address + ", Salary: " + salary + ", Coefficient: " + coefficient + ", Total Salary: "+ totalsalary +", Role id: " + role_id + ", Department id: " + department_id + ", Status: " + status);
         }
         //close
         DatabaseConnection.closeConnection(connection);
@@ -409,7 +441,7 @@ public class Employee {
         //Connect Db
         Connection connection = DatabaseConnection.openConnection();
         //Write sql to search status with Working
-        String sql = ("SELECT * FROM employees WHERE salary > 3000");
+        String sql = ("SELECT * FROM employees WHERE totalsalary > 3000");
         //Run sql
         Statement statement = connection.createStatement();
         ResultSet result = statement.executeQuery(sql);
@@ -422,11 +454,13 @@ public class Employee {
             String phone = result.getString("phone");
             String address = result.getString("address");
             float salary = result.getFloat("salary");
+            float coefficient = result.getFloat("coefficient");
+            float totalsalary = result.getFloat("totalsalary");
             int role_id = result.getInt("role_id");
             int department_id = result.getInt("department_id");
             String status = result.getString("status");
             //display
-            System.out.println("ID: " + id + ", Full name: " + fullname + ", Email: " + email + ", Phone: " + phone + ", Address: " + address + ", Salary: " + salary + ", Role id: " + role_id + ", Department id: " + department_id + ", Status: " + status);
+            System.out.println("ID: " + id + ", Full name: " + fullname + ", Email: " + email + ", Phone: " + phone + ", Address: " + address + ", Salary: " + salary + ", Coefficient: " + coefficient + ", Total Salary: "+ totalsalary +", Role id: " + role_id + ", Department id: " + department_id + ", Status: " + status);
         }
         //close
         DatabaseConnection.closeConnection(connection);

@@ -58,6 +58,8 @@ public class Menu {
                     ep.setAddress(input.nextLine());
                     System.out.print("Salary: ");
                     ep.setSalary(input.nextFloat());
+                    System.out.print("Coefficient: ");
+                    ep.setCoefficient(input.nextFloat());
                     System.out.print("role_id: ");
                     ep.setRole_id(input.nextInt());
                     System.out.print("Department_id: ");
@@ -96,6 +98,8 @@ public class Menu {
                     ep.setAddress(input.nextLine());
                     System.out.print("Salary: ");
                     ep.setSalary(input.nextFloat());
+                    System.out.print("Coefficient: ");
+                    ep.setCoefficient(input.nextFloat());
                     System.out.print("role_id: ");
                     ep.setRole_id(input.nextInt());
                     System.out.print("Department_id: ");
