@@ -87,7 +87,7 @@ public class Role {
         //Get data input
         String role_name = this.role_name;
         //Write a query update data with id
-        String sql = "UPDATE departments SET department_name = '" + role_name + "'WHERE id = " + id;
+        String sql = "UPDATE roles SET role_name = '" + role_name + "'WHERE id = " + id;
         //Run query
         Statement statement = connection.createStatement();
         statement.executeUpdate(sql);
